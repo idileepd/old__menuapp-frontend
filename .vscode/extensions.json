@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "mariusalchimavicius.json-to-ts",
+    "usernamehw.errorlens",
+    "eamodio.gitlens",
+    "naumovs.color-highlight",
+    "jaspernorth.vscode-pigments",
+    "styled-components.vscode-styled-components"
+  ]
+}
