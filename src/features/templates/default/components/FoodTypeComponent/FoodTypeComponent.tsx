@@ -1,7 +1,7 @@
 import { FoodTypeEggIcon, FoodTypeNonVegIcon } from '../icons';
 import { FoodTypeIcon } from '../icons/FoodTypeIcon';
 
-import { DefaultFoodTypeEnum } from '@/types/restaurantTypes';
+import { DefaultFoodTypeEnum } from '@/types/businessTypes';
 
 export const FoodTypeComponent = (props: { foodType: string }) => {
   const { foodType } = props;

@@ -4,7 +4,9 @@ import { CloseIcon, SearchIcon } from '../icons';
 
 import { searchStyles } from './styles';
 
-export const Search = () => {
+export const Search = (props: { onSearch: (searchString: string) => void }) => {
+  const { onSearch } = props;
+
   const classes = searchStyles();
   const [showClose, setShowClose] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,7 +22,7 @@ export const Search = () => {
     // scrollToTargetAdjusted();
   };
 
-  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const enteredText = e.target.value;
     setSearchTerm(enteredText);
     if (enteredText === '') {
@@ -28,6 +30,8 @@ export const Search = () => {
     } else {
       setShowClose(true);
     }
+    // Trigger the state
+    onSearch(enteredText);
   };
   const clearText = () => {
     setSearchTerm('');
@@ -47,7 +51,7 @@ export const Search = () => {
       <input
         className={classes.input}
         placeholder="Search dishes"
-        onChange={handleClick}
+        onChange={handleChange}
         value={searchTerm}
         // ref={inputRef}
       />

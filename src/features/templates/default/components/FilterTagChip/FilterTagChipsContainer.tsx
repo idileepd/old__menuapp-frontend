@@ -2,9 +2,9 @@ import { createUseStyles } from 'react-jss';
 
 import { FoodTypeEggIcon, FoodTypeNonVegIcon, FoodTypeVegIcon } from '../icons';
 
-import { ToggleChip } from './ToggleChip';
+import { FilterTagChip } from './FilterTagChip';
 
-import { FilterChipType, Theme } from '@/types';
+import { Tag, Theme } from '@/types';
 
 const containerStyles = createUseStyles((theme: Theme) => ({
   container: {
@@ -23,16 +23,20 @@ const containerStyles = createUseStyles((theme: Theme) => ({
   },
 }));
 
-export const ToggleChipsContainer = (props: { chips: FilterChipType[] }) => {
+export const FilterTagChipsContainer = (props: {
+  allTags: { [key: string]: Tag };
+  selectedTags: { [key: string]: string };
+  onSelectTag: (tagId: string) => void;
+}) => {
   const classes = containerStyles();
-  const { chips } = props;
+  const { allTags, selectedTags, onSelectTag } = props;
 
   const getChipIcon = (chip: string) => {
     const chipName = chip.toLowerCase();
     if (chipName === 'veg') {
       return FoodTypeVegIcon;
     }
-    if (chipName === 'non veg') {
+    if (chipName === 'nonveg') {
       return FoodTypeNonVegIcon;
     }
     if (chipName === 'egg') {
@@ -44,14 +48,20 @@ export const ToggleChipsContainer = (props: { chips: FilterChipType[] }) => {
 
   return (
     <div className={classes.container}>
-      {chips.map((chip) => (
-        <ToggleChip
-          key={chip.name}
-          name={chip.name}
-          icon={getChipIcon(chip.name)}
-          isSelected={chip.isSelected}
-        />
-      ))}
+      {Object.keys(allTags).map((tagId) => {
+        const tag = allTags[tagId];
+
+        return (
+          <FilterTagChip
+            key={tag._id}
+            id={tag._id}
+            onSelectTag={onSelectTag}
+            name={tag.name}
+            icon={getChipIcon(tag.name)}
+            isSelected={!!selectedTags[tag._id]}
+          />
+        );
+      })}
     </div>
   );
 };

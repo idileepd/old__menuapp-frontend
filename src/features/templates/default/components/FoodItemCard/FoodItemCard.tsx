@@ -6,7 +6,7 @@ import { FoodTypeComponent } from '../FoodTypeComponent/FoodTypeComponent';
 import { FoodItemCardImage } from './FoodItemCardImage';
 
 import { Theme } from '@/types/Theme';
-import { RestaurantFoodItem } from '@/types/restaurantTypes';
+import { RestaurantFoodItem } from '@/types/businessTypes';
 
 export const foodItemCardStyles = createUseStyles((theme: Theme) => ({
   foodItemCard: {

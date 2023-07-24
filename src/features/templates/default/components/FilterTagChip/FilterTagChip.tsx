@@ -37,18 +37,21 @@ const toggleChipStyles = createUseStyles((theme: Theme) => ({
 }));
 
 interface IToggleChip {
+  id: string;
   name: string;
   isSelected?: boolean;
   icon?: FC<SVGProps>;
+  onSelectTag: (tagId: string) => void;
 }
 
-export const ToggleChip = (props: IToggleChip) => {
-  const { name, icon: Icon, isSelected } = props;
+export const FilterTagChip = (props: IToggleChip) => {
+  const { id, name, icon: Icon, isSelected, onSelectTag } = props;
   const classes = toggleChipStyles();
 
   return (
     <div
       className={`${classes.toggleChip} ${isSelected ? classes.selected : ''}`}
+      onClick={() => onSelectTag(id)}
     >
       {Icon && <Icon />}
       <div className={classes.name}>{name}</div>

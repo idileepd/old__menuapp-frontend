@@ -2,10 +2,14 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import { counterReducer } from './counter';
 import { appReducer } from './app';
+import { businessReducer } from './business';
+import { menuReducer } from './menu';
 
 const allReducers = combineReducers({
   counter: counterReducer,
   app: appReducer,
+  business: businessReducer,
+  menu: menuReducer,
 });
 
 export const store = configureStore({
